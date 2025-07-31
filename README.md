@@ -74,7 +74,7 @@ Users should be able to:
 .grid-rows-[8fr_2fr] {
   grid-template-rows: 8fr 2fr;
 }
-
+```
 ### Continued Development
 
 - Finish JavaScript functionality (cart, modal, reset logic)
