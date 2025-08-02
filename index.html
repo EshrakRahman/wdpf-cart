@@ -7,6 +7,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <!-- custom css  -->
    <link rel="stylesheet" href="styles/output.css">
+   <script defer src="index.js"></script>
   
   <title>Frontend Mentor | Product list with cart</title>
 
@@ -16,7 +17,7 @@
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
-<body class="bg-rose-50 overflow-x-hidden">
+<body class="bg-rose-50 overflow-x-hidden  font-fontvar ">
 <div class=" p-6 grid gap-4 md:grid-cols-1 md:grid-rows-1 lg:grid-cols-[8fr_2fr] justify-center">
   
   <div class="products-list">
@@ -25,102 +26,215 @@
     </h1>
     <div class="items grid  grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 justify-items-center">
       <div class="item w-[250px] relative">
-        <img class="rounded-2xl mb-10" src="assets/images/image-waffle-mobile.jpg" alt="waffle-image">
+        <!-- <img class="main-img rounded-2xl  border-2 border-transparent  hover:border-2 hover:border-rose-500 hover:cursor-pointer mb-10" src="assets/images/image-waffle-mobile.jpg" alt="waffle-image"> -->
+        <picture>
+          <!-- Desktop -->
+          <source srcset="assets/images/image-waffle-desktop.jpg" media="(min-width: 1024px)" />
+          <!-- Tablet -->
+          <source srcset="assets/images/image-waffle-tablet.jpg" media="(min-width: 640px)" />
+          <!-- Mobile fallback -->
+          <img
+            class="main-img rounded-2xl border-2 border-transparent hover:border-rose-500 hover:cursor-pointer mb-10"
+            src="assets/images/image-waffle-mobile.jpg"
+            alt="waffle-image"
+          />
+        </picture>
+
         
         <p class="text-rose-500 font-normal text-sm">Waffle</p>
         <p class="text-rose-900 font-semibold text-base">Waffle with Berries</p>
         <p class="text-red-600 font-semibold text-base">$6.50</p>
-        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[47%] left-[20%] hover:cursor-pointer"> 
-          <img class="inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
-          Add to Cart
+        <span id="cartContainer" class="cart p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer">
+          <span class="">
+            <img class="decrement hidden" src="assets/images/icon-decrement-quantity.svg" alt="decrement">
+          </span>
+          
+          <span>
+            <img class=" inline " src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
+          </span>
+          
+          <span class="cartBtn">Add to Cart</span>
+
+          <span class="">
+            <img class="increment hidden" src="assets/images/icon-increment-quantity.svg" alt="increment">
+          </span>
+          
         </span>
       </div>
       <div class="item w-[250px] relative">
-        <img class="rounded-2xl mb-10" src="assets/images/image-creme-brulee-mobile.jpg" alt="waffle-image">
+        <!-- <img class="main-img rounded-2xl border-2 border-transparent hover:border-2 hover:border-rose-500 hover:cursor-pointer: mb-10" src="assets/images/image-creme-brulee-mobile.jpg" alt="creme-brulee"> -->
+
+        <picture>
+          <source srcset="assets/images/image-creme-brulee-desktop.jpg" media="(min-width: 1024px)" />
+          <source srcset="assets/images/image-creme-brulee-tablet.jpg" media="(min-width: 640px)" />
+          <img
+            class="main-img rounded-2xl border-2 border-transparent hover:border-rose-500 hover:cursor-pointer mb-10"
+            src="assets/images/image-creme-brulee-mobile.jpg"
+            alt="creme-brulee"
+          />
+        </picture>
+
         
         <p class="text-rose-500 font-normal text-sm">Crème Brûlée</p>
         <p class="text-rose-900 font-semibold text-base">Vanilla Bean Crème Brûlée</p>
         <p class="text-red-600 font-semibold text-base">$7.00</p>
-        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[47%] left-[20%] hover:cursor-pointer"> 
-          <img class="inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
+        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer"> 
+          <img class=" inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
           Add to Cart
         </span>
       </div>
       <div class="item w-[250px] relative">
-        <img class="rounded-2xl mb-10" src="assets/images/image-macaron-mobile.jpg" alt="Macaron-image">
+        <!-- <img class="main-img rounded-2xl border-2 border-transparent hover:border-2 hover:border-rose-500 hover:cursor-pointer: mb-10" src="assets/images/image-macaron-mobile.jpg" alt="Macaron-image"> -->
+
+        <picture>
+          <source srcset="assets/images/image-macaron-desktop.jpg" media="(min-width: 1024px)" />
+          <source srcset="assets/images/image-macaron-tablet.jpg" media="(min-width: 640px)" />
+          <img
+            class="main-img rounded-2xl border-2 border-transparent hover:border-rose-500 hover:cursor-pointer mb-10"
+            src="assets/images/image-macaron-mobile.jpg"
+            alt="Macaron-image"
+          />
+        </picture>
+
        
         <p class="text-rose-500 font-normal text-sm">Macaron</p>
         <p class="text-rose-900 font-semibold text-base">Macaron Mix of Five</p>
         <p class="text-red-600 font-semibold text-base">$8.00</p>
-        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[47%] left-[20%] hover:cursor-pointer"> 
-          <img class="inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
+        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer"> 
+          <img class=" inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
           Add to Cart
         </span>
       </div>
       <div class="item w-[250px] relative">
-        <img class="rounded-2xl mb-10" src="assets/images/image-tiramisu-mobile.jpg" alt="Tiramisu-image">
+        <!-- <img class="main-img rounded-2xl border-2 border-transparent hover:border-2 hover:border-rose-500 hover:cursor-pointer: mb-10" src="assets/images/image-tiramisu-mobile.jpg" alt="Tiramisu-image"> -->
+
+        <picture>
+          <source srcset="assets/images/image-tiramisu-desktop.jpg" media="(min-width: 1024px)" />
+          <source srcset="assets/images/image-tiramisu-tablet.jpg" media="(min-width: 640px)" />
+          <img
+            class="main-img rounded-2xl border-2 border-transparent hover:border-rose-500 hover:cursor-pointer mb-10"
+            src="assets/images/image-tiramisu-mobile.jpg"
+            alt="Tiramisu-image"
+          />
+        </picture>
+
         
         <p class="text-rose-500 font-normal text-sm">Tiramisu</p>
         <p class="text-rose-900 font-semibold text-base">Classic Tiramisu</p>
         <p class="text-red-600 font-semibold text-base">$6.50</p>
-        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[47%] left-[20%] hover:cursor-pointer"> 
-          <img class="inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
+        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer"> 
+          <img class=" inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
 
           Add to Cart
         </span>
       </div>
       <div class="item w-[250px] relative">
-        <img class="rounded-2xl mb-10" src="assets/images/image-baklava-mobile.jpg" alt="Baklava-image">
+        <!-- <img class="main-img rounded-2xl border-2 border-transparent hover:border-2 hover:border-rose-500 hover:cursor-pointer: mb-10" src="assets/images/image-baklava-mobile.jpg" alt="Baklava-image"> -->
+
+        <picture>
+          <source srcset="assets/images/image-baklava-desktop.jpg" media="(min-width: 1024px)" />
+          <source srcset="assets/images/image-baklava-tablet.jpg" media="(min-width: 640px)" />
+          <img
+            class="main-img rounded-2xl border-2 border-transparent hover:border-rose-500 hover:cursor-pointer mb-10"
+            src="assets/images/image-baklava-mobile.jpg"
+            alt="Baklava-image"
+          />
+        </picture>
+
         
         <p class="text-rose-500 font-normal text-sm">Baklava</p>
         <p class="text-rose-900 font-semibold text-base">  Pistachio Baklava</p>
         <p class="text-red-600 font-semibold text-base">$4.00</p>
-        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[47%] left-[20%] hover:cursor-pointer"> 
-          <img class="inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
+        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer"> 
+          <img class=" inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
           Add to Cart
         </span>
       </div>
       <div class="item w-[250px] relative">
-        <img class="rounded-2xl mb-10" src="assets/images/image-meringue-mobile.jpg" alt="Pie-image">
+        <!-- <img class="main-img rounded-2xl border-2 border-transparent hover:border-2 hover:border-rose-500 hover:cursor-pointer: mb-10" src="assets/images/image-meringue-mobile.jpg" alt="Pie-image"> -->
+
+        <picture>
+          <source srcset="assets/images/image-meringue-desktop.jpg" media="(min-width: 1024px)" />
+          <source srcset="assets/images/image-meringue-tablet.jpg" media="(min-width: 640px)" />
+          <img
+            class="main-img rounded-2xl border-2 border-transparent hover:border-rose-500 hover:cursor-pointer mb-10"
+            src="assets/images/image-meringue-mobile.jpg"
+            alt="meringue-image"
+          />
+        </picture>
+
         
         <p class="text-rose-500 font-normal text-sm">Pie</p>
         <p class="text-rose-900 font-semibold text-base">Lemon Meringue Pie</p>
         <p class="text-red-600 font-semibold text-base">$5.00</p>
-        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[47%] left-[20%] hover:cursor-pointer"> 
-          <img class="inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
+        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer"> 
+          <img class=" inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
           Add to Cart
         </span>
       </div>
       <div class="item w-[250px] relative">
-        <img class="rounded-2xl mb-10" src="assets/images/image-cake-mobile.jpg" alt="Cake-image">
+        <!-- <img class="main-img rounded-2xl border-2 border-transparent hover:border-2 hover:border-rose-500 hover:cursor-pointer: mb-10" src="assets/images/image-cake-mobile.jpg" alt="Cake-image"> -->
+
+        <picture>
+          <source srcset="assets/images/image-cake-desktop.jpg" media="(min-width: 1024px)" />
+          <source srcset="assets/images/image-cake-tablet.jpg" media="(min-width: 640px)" />
+          <img
+            class="main-img rounded-2xl border-2 border-transparent hover:border-rose-500 hover:cursor-pointer mb-10"
+            src="assets/images/image-cake-mobile.jpg"
+            alt="Baklava-image"
+          />
+        </picture>
+
        
         <p class="text-rose-500 font-normal text-sm">Cake</p>
         <p class="text-rose-900 font-semibold text-base">Red Velvet Cake</p>
         <p class="text-red-600 font-semibold text-base">$4.00</p>
-        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[47%] left-[20%] hover:cursor-pointer"> 
-          <img class="inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
+        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer"> 
+          <img class=" inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
           Add to Cart
         </span>
       </div>
       <div class="item w-[250px] relative">
-        <img class="rounded-2xl mb-10" src="assets/images/image-brownie-mobile.jpg" alt="Brownie-image">
+        <!-- <img class="main-img rounded-2xl border-2 border-transparent hover:border-2 hover:border-rose-500 hover:cursor-pointer: mb-10" src="assets/images/image-brownie-mobile.jpg" alt="Brownie-image"> -->
+
+        <picture>
+          <source srcset="assets/images/image-brownie-desktop.jpg" media="(min-width: 1024px)" />
+          <source srcset="assets/images/image-brownie-tablet.jpg" media="(min-width: 640px)" />
+          <img
+            class="main-img rounded-2xl border-2 border-transparent hover:border-rose-500 hover:cursor-pointer mb-10"
+            src="assets/images/image-brownie-mobile.jpg"
+            alt="Baklava-image"
+          />
+        </picture>
+
         
         <p class="text-rose-500 font-normal text-sm">Brownie</p>
         <p class="text-rose-900 font-semibold text-base">Salted Caramel Brownie</p>
         <p class="text-red-600 font-semibold text-base">$4.50</p>
-        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[47%] left-[20%] hover:cursor-pointer"> 
-          <img class="inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
+        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer"> 
+          <img class=" inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
           Add to Cart
         </span>
       </div>
       <div class="item w-[250px] relative">
-        <img class="rounded-2xl mb-10" src="assets/images/image-panna-cotta-mobile.jpg" alt="Panna Cotta image">
+        <!-- <img class="main-img rounded-2xl border-2 border-transparent hover:border-2 hover:border-rose-500 hover:cursor-pointer: mb-10" src="assets/images/image-panna-cotta-mobile.jpg" alt="Panna Cotta image"> -->
+
+        <picture>
+          <source srcset="assets/images/image-panna-cotta-desktop.jpg" media="(min-width: 1024px)" />
+          <source srcset="assets/images/image-panna-cotta-tablet.jpg" media="(min-width: 640px)" />
+          <img
+            class="main-img rounded-2xl border-2 border-transparent hover:border-rose-500 hover:cursor-pointer mb-10"
+            src="assets/images/image-panna-cotta-mobile.jpg"
+            alt="Baklava-image"
+          />
+        </picture>
+
         
         <p class="text-rose-500 font-normal text-sm">Panna Cotta</p>
         <p class="text-rose-900 font-semibold text-base">Vanilla Panna Cotta</p>
         <p class="text-red-600 font-semibold text-base">$6.50</p>
-        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[47%] left-[20%] hover:cursor-pointer"> 
-          <img class="inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
+        <span class="p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer"> 
+          <img class=" inline" src="assets/images/icon-add-to-cart.svg" alt="add to cart icon">
           Add to Cart
         </span>
       </div>
