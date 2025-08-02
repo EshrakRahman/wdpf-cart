@@ -1,33 +1,69 @@
-// image changes for all documents size 
+let cartBtn = document.querySelector(".cart-btn");
+const decrBtn = document.querySelector(".decr-btn");
+const incrBtn = document.querySelector(".incr-btn");
+const quantity = document.querySelector(".quantity");
 
-let imgTag = document.getElementsByClassName("main-img")[0];
 
-  const cartBtn = document.querySelector('.cartBtn');
-  const quantityControls = document.querySelector('.quantity-controls');
-  const incrementBtn = document.querySelector('.increment');
-  const decrementBtn = document.querySelector('.decrement');
-  const countDisplay = document.querySelector('.count');
-  
-  let count = 1;
 
-  cartBtn.addEventListener('click', () => {
-    // Toggle visibility
-    cartBtn.classList.add('hidden');
-    quantityControls.classList.remove('hidden');
+
+function hideIconIncrDecr () {
+    let hideCartIcon = document.querySelector(".cart-icon");
+    let showIconDecr = document.querySelector(".decr-btn");
+    let showIconIncr = document.querySelector(".incr-btn");
+
+    cartBtn.classList.remove("bg-white");
+    cartBtn.classList.add("bg-rose-500");
+    hideCartIcon.classList.add("hidden");
+    quantity.classList.add("mx-4")
+    // console.log(cartBtn.classList);
     
-    // Change background color
-    cartBtn.classList.remove('bg-white');
-    cartBtn.classList.add('bg-rose-500');
-  });
 
-  incrementBtn.addEventListener('click', () => {
+    console.log(showIconDecr.classList);
+
+    showIconDecr.classList.remove("hidden");
+    showIconIncr.classList.remove("hidden");
+    console.log(showIconIncr.classList);
+    
+
+}
+
+
+let count = 1;
+
+function cartUpdateDecr() {
+
+  if (count > 1) {
+    count--;
+    quantity.textContent = count;
+  }
+
+  decrBtn.disabled = count === 1;
+}
+
+function cartUpdateIncr() {
+
     count++;
-    countDisplay.textContent = count;
-  });
+    quantity.textContent = count;
 
-  decrementBtn.addEventListener('click', () => {
     if (count > 1) {
-      count--;
-      countDisplay.textContent = count;
+      decrBtn.disabled = false;
     }
-  });
+
+}
+
+
+
+cartBtn.addEventListener("click", () => {
+    hideIconIncrDecr();
+    quantity.textContent = count;
+    
+})
+
+decrBtn.addEventListener("click", () => {
+    cartUpdateDecr();
+
+})
+
+incrBtn.addEventListener("click", () => {
+    cartUpdateIncr();
+})

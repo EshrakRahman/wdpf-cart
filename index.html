@@ -7,7 +7,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <!-- custom css  -->
    <link rel="stylesheet" href="styles/output.css">
-   <script defer src="index.js"></script>
   
   <title>Frontend Mentor | Product list with cart</title>
 
@@ -44,7 +43,7 @@
         <p class="text-rose-500 font-normal text-sm">Waffle</p>
         <p class="text-rose-900 font-semibold text-base">Waffle with Berries</p>
         <p class="text-red-600 font-semibold text-base">$6.50</p>
-        <span id="cartContainer" class="cart p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer">
+        <!-- <span id="cartContainer" class="cart p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer">
           <span class="">
             <img class="decrement hidden" src="assets/images/icon-decrement-quantity.svg" alt="decrement">
           </span>
@@ -56,10 +55,23 @@
           <span class="cartBtn">Add to Cart</span>
 
           <span class="">
-            <img class="increment hidden" src="assets/images/icon-increment-quantity.svg" alt="increment">
+            <img class=" hidden" src="assets/images/icon-increment-quantity.svg" alt="increment">
           </span>
           
-        </span>
+        </span> -->
+        <div class="cart-btn cart p-4 border border-rose-400 bg-white rounded-4xl absolute top-[60%] left-[20%] hover:cursor-pointer flex items-center content-center">
+          <button class="hidden decr-btn c-btn">
+            <!-- <p class="hidden decr incr-decr-btn"> + </p> -->
+            <img class=" p-2.5 decr h-decr-btn" src="assets/images/icon-decrement-quantity.svg" alt="decrement">
+          </button>
+          <div class="flex gap-3">
+            <img class="mr-1.5 cart-icon" src="assets/images/icon-add-to-cart.svg" alt="cart">
+            <p class="quantity">Add to cart</p>
+          </div>
+          <button class="hidden incr-btn c-btn">
+            <img class=" p-2.5 incr h-incr-btn" src="assets/images/icon-increment-quantity.svg" alt="increment">
+          </button>
+        </div>
       </div>
       <div class="item w-[250px] relative">
         <!-- <img class="main-img rounded-2xl border-2 border-transparent hover:border-2 hover:border-rose-500 hover:cursor-pointer: mb-10" src="assets/images/image-creme-brulee-mobile.jpg" alt="creme-brulee"> -->
@@ -259,6 +271,7 @@
   </div>
 
 </div>
+<script src="index.js"></script>
 
 
 </body>
