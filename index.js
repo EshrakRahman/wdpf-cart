@@ -1,92 +1,52 @@
-let cartBtn = document.querySelector(".cart-btn");
-const decrBtn = document.querySelector(".decr-btn");
-const incrBtn = document.querySelector(".incr-btn");
-const quantity = document.querySelector(".quantity");
+const cartButtons = document.querySelectorAll(".cart-btn");
 
+cartButtons.forEach((cartBtn) => {
+  let count = 0;
 
+  const quantity = cartBtn.querySelector(".quantity");
+  const incrBtn = cartBtn.querySelector(".incr-btn");
+  const decrBtn = cartBtn.querySelector(".decr-btn");
+  const cartIcon = cartBtn.querySelector(".cart-icon");
 
+  // Handle Cart Click - First time
+  cartBtn.addEventListener("click", () => {
+    if (count === 0) {
+      count = 1;
+      quantity.textContent = count;
+      cartBtn.classList.remove("bg-white");
+      cartBtn.classList.add("bg-rose-500");
+      cartIcon.classList.add("hidden");
+      quantity.classList.add("mx-4");
+      decrBtn.classList.remove("hidden");
+      incrBtn.classList.remove("hidden");
+    }
+  });
 
-
-function hideIconIncrDecr () {
-    let hideCartIcon = document.querySelector(".cart-icon");
-    let showIconDecr = document.querySelector(".decr-btn");
-    let showIconIncr = document.querySelector(".incr-btn");
-
-
-    cartBtn.classList.remove("bg-white");
-    cartBtn.classList.add("bg-rose-500");
-    hideCartIcon.classList.add("hidden");
-    quantity.classList.add("mx-4")
-    // console.log(cartBtn.classList);
-    
-
-    console.log(showIconDecr.classList);
-
-    showIconDecr.classList.remove("hidden");
-    showIconIncr.classList.remove("hidden");
-    console.log(showIconIncr.classList);
-    
-
-}
-
-
-let count = 1;
-
-function cartUpdateDecr() {
-
-  if (count > 1) {
-    count--;
-    quantity.textContent = count;
-  }
-
-  decrBtn.disabled = count === 1;
-  if (count === 1) {
-    cartUiUpadte();
-  }
-}
-
-function cartUiUpadte () {
-    let showCartIcon = document.querySelector(".cart-icon");
-    let hideIconDecr = document.querySelector(".decr-btn");
-    let hideIconIncr = document.querySelector(".incr-btn");
-
-
-    cartBtn.classList.add("bg-white");
-    cartBtn.classList.remove("bg-rose-500");
-    showCartIcon.classList.remove("hidden");
-    quantity.classList.add("mx-4")
-    
-
-    hideIconDecr.classList.add("hidden");
-    hideIconIncr.classList.add("hidden");
-}
-
-function cartUpdateIncr() {
-
+  // Handle Increment
+  incrBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
     count++;
     quantity.textContent = count;
+    decrBtn.disabled = false;
+  });
 
+  // Handle Decrement
+  decrBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
     if (count > 1) {
-      decrBtn.disabled = false;
+      count--;
+      quantity.textContent = count;
+    } else {
+      count = 0;
+      quantity.textContent = "Add to cart";
+      cartBtn.classList.remove("bg-rose-500");
+      cartBtn.classList.add("bg-white");
+      cartIcon.classList.remove("hidden");
+      quantity.classList.remove("mx-4");
+      decrBtn.classList.add("hidden");
+      incrBtn.classList.add("hidden");
     }
 
-}
-
-
-
-cartBtn.addEventListener("click", () => {
-    // e.stopPropagation();
-    hideIconIncrDecr();
-    quantity.textContent = count;
-    
-})
-
-decrBtn.addEventListener("click", () => {
-    // e.stopPropagation();
-    cartUpdateDecr();
-
-})
-
-incrBtn.addEventListener("click", () => {
-    cartUpdateIncr();
-})
+    decrBtn.disabled = count <= 1;
+  });
+});
